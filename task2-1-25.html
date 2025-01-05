@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Task 1 - Only Alphabets and space</h2>
+    <input type="text" id="name" />
+    <p id="name-error" style="display: none; color: red">
+      *Max 20 characters allowed
+    </p>
+    <br />
+    <h2>Task 2 - Only Alphabets</h2>
+    <input type="text" id="alpha-name" />
+    <br />
+    <h2>Task 3 - Number upto only two decimal points</h2>
+    <input type="text" id="decimal" />
+    <br />
+    <h2>Task 4 UserName - Only Alphabets and numbers</h2>
+    <input type="text" id="user-name" value="" />
+  </body>
+  <script>
+    const uname = document.getElementById("name");
+    const nameError = document.getElementById("name-error");
+    console.log(uname.value);
+    uname.addEventListener("keydown", (ele) => {
+      if (
+        !(
+          (ele.key >= "a" && ele.key <= "z") ||
+          (ele.key >= "A" && ele.key <= "Z") ||
+          ele.key === " "
+        )
+      ) {
+        ele.preventDefault();
+      } else if (ele.key === " ") {
+        if (
+          uname.value === "" ||
+          uname.value.at(uname.selectionStart - 1) === " " ||
+          uname.value.at(uname.selectionStart) === " "
+        )
+          ele.preventDefault();
+      }
+      if (!(ele.key === "Backspace") && uname.value.length >= 20) {
+        nameError.style.display = "block";
+        ele.preventDefault();
+      } else {
+        if (ele.key >= "a" && ele.key <= "z") {
+          if (
+            uname.value === "" ||
+            uname.value.at(uname.selectionStart - 1) === " "
+          ) {
+            let end = uname.value.slice(uname.selectionStart);
+            if (end.at(0) >= "A" && end.at(0) <= "Z")
+              end = end.at(0).toLowerCase() + end.slice(1);
+            uname.value = `${uname.value.slice(
+              0,
+              uname.selectionStart
+            )}${ele.key.toUpperCase()}${end}`;
+            ele.preventDefault();
+          }
+        }
+        nameError.style.display = "none";
+      }
+      console.log(ele);
+    });
+
+    uname.addEventListener("keyup", (ele) => {
+      if (ele.key === "Backspace") {
+        let start = uname.value.slice(0, uname.selectionStart);
+        let end = uname.value.slice(uname.selectionStart);
+        if (start.at(-1) === " ") {
+          end = end.at(0).toUpperCase() + end.slice(1);
+        }
+        uname.value = `${start}${end}`;
+      }
+    });
+
+    const alphaName = document.getElementById("alpha-name");
+    alphaName.addEventListener("keypress", (ele) => {
+      if (
+        !(
+          (ele.key >= "a" && ele.key <= "z") ||
+          (ele.key >= "A" && ele.key <= "Z")
+        )
+      ) {
+        ele.preventDefault();
+      }
+    });
+
+    const decimal = document.getElementById("decimal");
+    let flag = false;
+    decimal.addEventListener("keydown", (ele) => {
+      if (ele.key === ".") {
+        if (decimal.value === "") decimal.value = "0";
+        if (!flag) {
+          decimal.value += ".";
+          flag = true;
+        }
+      }
+      if (ele.key === "Backspace") {
+        if (decimal.value.at(-1) === ".") {
+          flag = false;
+        }
+      } else if (!(ele.key >= "0" && ele.key <= "9")) {
+        ele.preventDefault();
+      } else if (flag) {
+        if (decimal.value.length - 3 === decimal.value.indexOf("."))
+          ele.preventDefault();
+      }
+    });
+
+    const userName = document.getElementById("user-name");
+    userName.addEventListener("keypress", (ele) => {
+      if (
+        !(
+          (ele.key >= "a" && ele.key <= "z") ||
+          (ele.key >= "A" && ele.key <= "Z") ||
+          (ele.key >= "0" && ele.key <= "9")
+        )
+      ) {
+        ele.preventDefault();
+      }
+    });
+  </script>
+</html>

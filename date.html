@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Different time zones</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Roboto";
+      }
+      .container {
+        padding: 80px 0px;
+        width: 1232px;
+        align-content: center;
+        margin: 0 auto;
+      }
+      .card-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 100px;
+      }
+      .card {
+        height: 400px;
+        width: 300px;
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #aaa;
+      }
+      .card-img {
+        height: 60%;
+        background-color: azure;
+        border-radius: inherit;
+      }
+      .card-img img {
+        border-radius: 10px 10px 0px 0;
+        height: 100%;
+        width: 100%;
+      }
+      .card-info {
+        position: relative;
+        padding: 10px;
+      }
+      .card-info-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 20px;
+      }
+      .card-info p {
+        margin-top: 5px;
+      }
+      .status {
+        /* width: 100px; */
+        height: 30px;
+        text-align: center;
+        align-content: center;
+        padding: 0 10px;
+        border-radius: 5px;
+        position: absolute;
+        inset: 115px 20px auto auto;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="card-container">
+          <div class="card">
+            <div class="card-img"><img src="images.jpg" alt="img" /></div>
+            <div class="card-info">
+              <div class="card-info-head">
+                <h2 class="title"></h2>
+                <h3 class="location"></h3>
+              </div>
+              <p class="openTime">Open timing : 9:00</p>
+              <p class="closeTime">Close timing : 18:00</p>
+              <div class="status"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img"><img src="images.jpg" alt="img" /></div>
+            <div class="card-info">
+              <div class="card-info-head">
+                <h2 class="title"></h2>
+                <h3 class="location"></h3>
+              </div>
+              <p class="openTime">Open timing : 9:00</p>
+              <p class="closeTime">Close timing : 18:00</p>
+              <div class="status"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img"><img src="images.jpg" alt="img" /></div>
+            <div class="card-info">
+              <div class="card-info-head">
+                <h2 class="title"></h2>
+                <h3 class="location"></h3>
+              </div>
+              <p class="openTime">Open timing : 9:00</p>
+              <p class="closeTime">Close timing : 18:00</p>
+              <div class="status"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img"><img src="images.jpg" alt="img" /></div>
+            <div class="card-info">
+              <div class="card-info-head">
+                <h2 class="title"></h2>
+                <h3 class="location"></h3>
+              </div>
+              <p class="openTime">Open timing : 9:00</p>
+              <p class="closeTime">Close timing : 18:00</p>
+              <div class="status"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img"><img src="images.jpg" alt="img" /></div>
+            <div class="card-info">
+              <div class="card-info-head">
+                <h2 class="title"></h2>
+                <h3 class="location"></h3>
+              </div>
+              <p class="openTime">Open timing : 9:00</p>
+              <p class="closeTime">Close timing : 18:00</p>
+              <div class="status"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img"><img src="images.jpg" alt="img" /></div>
+            <div class="card-info">
+              <div class="card-info-head">
+                <h2 class="title"></h2>
+                <h3 class="location"></h3>
+              </div>
+              <p class="openTime">Open timing : 9:00</p>
+              <p class="closeTime">Close timing : 18:00</p>
+              <div class="status"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      const date = new Date();
+      console.log(date);
+      const companies = [
+        {
+          name: "Google",
+          location: "New York",
+          openTime: 9,
+          closeTime: 18,
+          timeZone: "America/New_York",
+        },
+        {
+          name: "Amazon",
+          location: "Sydney",
+          openTime: 10,
+          closeTime: 19,
+          timeZone: "Australia/Sydney",
+        },
+        {
+          name: "Apple",
+          location: "Paris",
+          openTime: 20,
+          closeTime: 5,
+          timeZone: "Europe/Paris",
+        },
+        {
+          name: "Emirates Airlines",
+          location: "Dubai",
+          openTime: 0,
+          closeTime: 12,
+          timeZone: "Asia/Dubai",
+        },
+        {
+          name: "Panasonic",
+          location: "Japan",
+          openTime: 13,
+          closeTime: 22,
+          timeZone: "Japan",
+        },
+        {
+          name: "Margin Wheeler",
+          location: "Singapore",
+          openTime: 7,
+          closeTime: 19,
+          timeZone: "Singapore",
+        },
+      ];
+      const names = document.getElementsByClassName("title");
+      const citys = document.getElementsByClassName("location");
+      const openTimes = document.getElementsByClassName("openTime");
+      const closeTimes = document.getElementsByClassName("closeTime");
+      const status = document.getElementsByClassName("status");
+      for (let i = 0; i < status.length; i++) {
+        names[i].innerText = companies[i].name;
+        citys[i].innerText = companies[i].location;
+        openTimes[i].innerText = `Open time : ${companies[i].openTime}:00`;
+        closeTimes[i].innerText = `Close time : ${companies[i].closeTime}:00`;
+        const date1 = Intl.DateTimeFormat("en-US", {
+          hour: "numeric",
+          hour12: false,
+          minute: "numeric",
+          second: "numeric",
+          weekday: "long",
+          timeZone: companies[i].timeZone,
+        });
+        // const date2 = Intl.DateTimeFormat("en-US", {
+        //   dateStyle:"long",
+        //   timeZone: companies[i].timeZone,
+        // });
+        let arr = date1.format(date);
+        arr = arr.split(" ");
+        let flag = true;
+        if (arr[0] === "Saturday" || arr[0] === "Sunday") flag = false;
+        arr[1] = arr[1].split(":");
+        const hour = Number.parseInt(arr[1][0]);
+        console.log(arr);
+        if (companies[i].openTime > companies[i].closeTime) {
+          if (hour < companies[i].openTime && hour >= companies[i].closeTime)
+            flag = false;
+        } else if (
+          hour < companies[i].openTime ||
+          hour >= companies[i].closeTime
+        )
+          flag = false;
+        if (flag) {
+          status[i].style.backgroundColor = "#a4ffbe";
+          status[i].style.color = "green";
+          status[i].innerText = "Open";
+        } else {
+          status[i].style.backgroundColor = "rgb(253, 165, 165)";
+          status[i].style.color = "#c90000";
+          status[i].innerText = "Closed";
+        }
+      }
+    </script>
+  </body>
+</html>
