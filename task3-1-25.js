@@ -1,6 +1,6 @@
 const obj = {
   tag: "form",
-  attribute: {
+  attributes: {
     autoComplete: "off",
   },
   children: [
@@ -13,13 +13,25 @@ const obj = {
             {
               tag: "label",
               content: "Username",
-              attribute: {
+              attributes: {
                 for: "user-name",
               },
             },
             {
+              tag: "span",
+              content: "*Username Error msg",
+              attributes: {
+                id: "user-name-error-msg"
+              },
+              style: {
+                color: "red",
+                float: "right",
+                // display: "none"
+              }
+            },
+            {
               tag: "input",
-              attribute: {
+              attributes: {
                 type: "text",
                 placeHolder: "Harry Potter",
                 id: "user-name",
@@ -43,13 +55,25 @@ const obj = {
             {
               tag: "label",
               content: "Phone Number",
-              attribute: {
+              attributes: {
                 for: "phone",
               },
             },
             {
+              tag: "span",
+              content: "*Phone Error msg",
+              attributes: {
+                id: "phone-error-msg"
+              },
+              style: {
+                color: "red",
+                float: "right",
+                // display: "none"
+              }
+            },
+            {
               tag: "input",
-              attribute: {
+              attributes: {
                 type: "tel",
                 placeHolder: "9876543210",
                 id: "phone",
@@ -74,13 +98,25 @@ const obj = {
             {
               tag: "label",
               content: "Email",
-              attribute: {
+              attributes: {
                 for: "mail",
               },
             },
             {
+              tag: "span",
+              content: "*Mail Error msg",
+              attributes: {
+                id: "mail-error-msg"
+              },
+              style: {
+                color: "red",
+                float: "right",
+                // display: "none"
+              }
+            },
+            {
               tag: "input",
-              attribute: {
+              attributes: {
                 type: "email",
                 placeHolder: "xyz@gmail.com",
                 id: "mail",
@@ -103,13 +139,25 @@ const obj = {
             {
               tag: "label",
               content: "Address",
-              attribute: {
+              attributes: {
                 for: "address",
               },
             },
             {
+              tag: "span",
+              content: "*Address Error msg",
+              attributes: {
+                id: "address-error-msg"
+              },
+              style: {
+                color: "red",
+                float: "right",
+                // display: "none"
+              }
+            },
+            {
               tag: "input",
-              attribute: {
+              attributes: {
                 placeHolder: "Door No, Street Name, City, District - pincode",
                 id: "address",
                 name: "address",
@@ -131,7 +179,7 @@ const obj = {
             {
               tag: "label",
               content: "Gender",
-              attribute: {
+              attributes: {
                 for: "gender",
               },
               style: {
@@ -141,7 +189,7 @@ const obj = {
             },
             {
               tag: "input",
-              attribute: {
+              attributes: {
                 type: "radio",
                 name: "gender",
                 value: "male",
@@ -157,7 +205,7 @@ const obj = {
             {
               tag: "label",
               content: "Male",
-              attribute: {
+              attributes: {
                 for: "male",
               },
               style: {
@@ -166,7 +214,7 @@ const obj = {
             },
             {
               tag: "input",
-              attribute: {
+              attributes: {
                 type: "radio",
                 name: "gender",
                 value: "female",
@@ -182,12 +230,24 @@ const obj = {
             {
               tag: "label",
               content: "Female",
-              attribute: {
+              attributes: {
                 for: "female",
               },
               style: {
                 verticalAlign: "middle",
               },
+            },
+            {
+              tag: "span",
+              content: "*Gender Error msg",
+              attributes: {
+                id: "gender-error-msg"
+              },
+              style: {
+                color: "red",
+                float: "right",
+                // display: "none"
+              }
             },
           ],
           style: {
@@ -200,19 +260,31 @@ const obj = {
             {
               tag: "label",
               content: "Expert At",
-              attribute: {
+              attributes: {
                 for: "language",
               },
             },
             {
+              tag: "span",
+              content: "*Language Error msg",
+              attributes: {
+                id: "language-error-msg"
+              },
+              style: {
+                color: "red",
+                float: "right",
+                // display: "none"
+              }
+            },
+            {
               tag: "select",
-              attribute: {
+              attributes: {
                 id: "language",
               },
               children: [
                 {
                   tag: "option",
-                  attribute: {
+                  attributes: {
                     value: "",
                     selected: true,
                     disabled: true,
@@ -221,28 +293,28 @@ const obj = {
                 },
                 {
                   tag: "option",
-                  attribute: {
+                  attributes: {
                     value: "C",
                   },
                   content: "C",
                 },
                 {
                   tag: "option",
-                  attribute: {
+                  attributes: {
                     value: "Java",
                   },
                   content: "Java",
                 },
                 {
                   tag: "option",
-                  attribute: {
+                  attributes: {
                     value: "Python",
                   },
                   content: "Python",
                 },
                 {
                   tag: "option",
-                  attribute: {
+                  attributes: {
                     value: "Go",
                   },
                   content: "Go",
@@ -264,8 +336,53 @@ const obj = {
           tag: "div",
           children: [
             {
+              tag: "label",
+              content: "OTP",
+              attributes: {
+                for: "otp",
+              },
+            },
+            {
               tag: "input",
-              attribute: {
+              attributes: {
+                type: "tel",
+                placeHolder: "6-digit otp",
+                id: "otp",
+                name: "otp",
+                minlength: "6",
+                required: true,
+              },
+              style: {
+                marginLeft: "20px",
+                width: "30%",
+                height: "40px",
+              },
+            },
+            {
+              tag: "button",
+              content: "Generate",
+              attributes: {
+                id: "generate",
+              },
+              style: {
+                marginLeft: "20px",
+                width: "30%",
+                height: "40px",
+                marginTop: "10px",
+                cursor: "pointer",
+              },
+            },
+          ],
+          style: {
+            width: "98.5%",
+          },
+        },
+        {
+          tag: "div",
+          children: [
+            {
+              tag: "input",
+              attributes: {
                 type: "submit",
                 id: "submit",
                 name: "submit",
@@ -285,7 +402,7 @@ const obj = {
             },
             {
               tag: "input",
-              attribute: {
+              attributes: {
                 type: "reset",
                 id: "reset",
                 name: "reset",
@@ -350,9 +467,9 @@ function start(obj) {
         element.style[s] = obj.style[s];
         // console.log(s);
       }
-    } else if (c === "attribute") {
-      for (const s of Object.keys(obj.attribute)) {
-        element.setAttribute(s, obj.attribute[s]);
+    } else if (c === "attributes") {
+      for (const s of Object.keys(obj.attributes)) {
+        element.setAttribute(s, obj.attributes[s]);
         // console.log(s);
       }
     }
@@ -502,4 +619,57 @@ reset.addEventListener("mouseenter", () => {
 reset.addEventListener("mouseout", () => {
   reset.style.backgroundColor = "rgb(253, 165, 165)";
   reset.style.color = "black";
+});
+
+const otp = document.getElementById("otp");
+
+otp.addEventListener("keydown", (e) => {
+  if (!((e.key >= "0" && e.key <= "9") || e.key === "Backspace")) {
+    e.preventDefault();
+  }
+  if (!(e.key === "Backspace") && otp.value.length >= 6) {
+    e.preventDefault();
+  }
+  if (e.key === "0" && otp.value === "") {
+    e.preventDefault();
+  }
+  console.log(e);
+});
+
+otp.addEventListener("paste", (e) => {
+  const data = e.clipboardData.getData("text");
+  if (data.length !== 6) e.preventDefault();
+  for (const x of data) {
+    if (!(x >= "0" && x <= "9")) {
+      e.preventDefault();
+      break;
+    }
+  }
+  // console.log(e);
+});
+
+const generate = document.getElementById("generate");
+let pin;
+
+submit.addEventListener("click", (e) => {
+  if (otp.value !== pin.toString()) {
+    alert("Invalid Otp");
+    e.preventDefault();
+  }
+});
+
+generate.addEventListener("click", (e) => {
+  pin = Math.floor(Math.random() * 1000000);
+  alert(`Your OTP is ${pin} .`);
+  let count = 30;
+  generate.disabled = true;
+  const interval = setInterval(() => {
+    generate.innerText = count--;
+
+    if (count < 0) {
+      clearInterval(interval);
+      generate.innerText = "Re-Generate";
+      generate.disabled = false;
+    }
+  }, 1000);
 });
