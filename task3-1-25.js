@@ -1,3 +1,4 @@
+let a = "hi"
 const obj = {
   tag: "form",
   attributes: {
@@ -19,7 +20,7 @@ const obj = {
             },
             {
               tag: "span",
-              content: "*Username Error msg",
+              content: a,
               attributes: {
                 id: "user-name-error-msg"
               },
@@ -673,3 +674,6 @@ generate.addEventListener("click", (e) => {
     }
   }, 1000);
 });
+
+a = "hello"
+console.log(a)
