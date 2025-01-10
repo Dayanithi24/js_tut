@@ -140,7 +140,7 @@ function createElement(tag) {
     return element;
   }
   
-  function start(obj, updateMap) {
+  function start(obj) {
     const keys = Object.keys(obj);
     //   console.log(keys);
     let element;
@@ -149,7 +149,7 @@ function createElement(tag) {
         element = createElement(obj.tag);
       } else if (c === "children") {
         for (const object of obj.children) {
-          element.appendChild(start(object, updateMap));
+          element.appendChild(start(object));
           // console.log(object);
         }
       } else if (c === "content") {const textNode = document.createTextNode("");
@@ -158,17 +158,8 @@ function createElement(tag) {
         };
         updateContent();
         element.appendChild(textNode);
-        if (obj.dataKey) {
-            if (!updateMap[obj.dataKey]) updateMap[obj.dataKey] = [];
-            updateMap[obj.dataKey].push(updateContent);
-          }
-      
-          if (obj.dataKeys) {
-            for (const key of obj.dataKeys) {
-              if (!updateMap[key]) updateMap[key] = [];
-              updateMap[key].push(updateContent);
-            }
-          }
+        obj._update = updateContent;
+        
       } else if (c === "style") {
         for (const s of Object.keys(obj.style)) {
           element.style[s] = obj.style[s];
@@ -183,9 +174,8 @@ function createElement(tag) {
     }
     return element;
   }
-  
-  const updateMap = {};
-  const final = start(obj, updateMap);
+
+  const final = start(obj);
 //   console.log(document.body);
   document.body.appendChild(final);
 
@@ -210,9 +200,12 @@ for(const prop in data) {
     watchVariable(data, prop, (newValue, oldValue) => {
         console.log(`${prop} changed from ${oldValue} to ${newValue}`);
         obj.children.forEach((child) => {
-            if (updateMap[prop]) {
-                updateMap[prop].forEach((updateFn) => updateFn());
-            }
+            if (
+                child.dataKey === prop ||
+                (child.dataKeys && child.dataKeys.includes(prop))
+              ) {
+                child._update();
+              }
         });
       });
 }
@@ -223,4 +216,3 @@ const handleUpdate = () => {
     data[mark] = Number(markValue);
     return true;
 }
-console.log(updateMap);
